@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///C:/Users/redit/Downloads/cloudstronger-splash.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudStronger — Infrastructure built to hold its shape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./cloudstronger-splash2_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c1220;
+    --bg-panel: #111a2c;
+    --bg-panel-raised: #16223a;
+    --line: #2c3f5c;
+    --line-bright: #4a678f;
+    --text: #eef2f8;
+    --text-dim: #93a4bf;
+    --text-faint: #5d7093;
+    --amber: #e2a23c;
+    --amber-dim: #a97a34;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.5;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity:0.08;
+  }
+
+  .wrap{ position:relative; z-index:1; }
+
+  h1, h2, h3, .display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo{
+    display:flex;
+    align-items:right;
+    gap:10px;
+  }
+
+  .logo svg{ width:42.5px; height:42.5px; display:block; flex-shrink:0; }
+  footer .logo svg{ width:32.5px; height:32.5px; }
+
+  .logo-word{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight:700;
+    color: var(--text);
+  }
+
+  .logo-word span{ color: var(--amber); }
+
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:0.92rem;
+    color: var(--text-dim);
+  }
+
+  .nav-links a:hover{ color: var(--text); }
+
+  .nav-cta{
+    padding:9px 18px;
+    border:1px solid var(--line-bright);
+    border-radius:2px;
+    font-size:0.88rem;
+    color: var(--text);
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-cta:hover{ border-color: var(--amber); background: rgba(226,162,60,0.08); }
+
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items:center;
+    padding: 8vh 6vw 10vh;
+    max-width:1440px;
+    margin:0 auto;
+  }
+
+  @media (max-width: 980px){
+    .hero{ grid-template-columns: 1fr; padding-top:6vh; }
+  }
+
+  .hero-copy .kicker{
+    font-size:0.85rem;
+    color: var(--amber);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:500;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .hero-copy .kicker::before{
+    content:'';
+    width:22px;
+    height:1px;
+    background: var(--amber);
+    display:inline-block;
+  }
+
+  .hero-copy h1{
+    font-size: clamp(2.4rem, 4.4vw, 4rem);
+    line-height:1.08;
+    max-width: 12ch;
+    color: var(--text);
+  }
+
+  .hero-copy p.lede{
+    margin-top: 26px;
+    font-size:1.08rem;
+    color: var(--text-dim);
+    max-width: 46ch;
+  }
+
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    background: var(--amber);
+    color: #16130a;
+    padding: 14px 26px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary:hover{ background:#eeb15a; transform: translateY(-1px); }
+
+  .btn-secondary{
+    padding:14px 22px;
+    font-size:0.95rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--line-bright);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-secondary:hover{ border-color: var(--amber); color: var(--amber); }
+
+  .hero-note{
+    margin-top:30px;
+    font-size:0.82rem;
+    color: var(--text-faint);
+  }
+
+  /* ---------- BLUEPRINT DIAGRAM ---------- */
+  .diagram-frame{
+    position:relative;
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg));
+    padding: 30px;
+    aspect-ratio: 1 / 1.02;
+    max-width: 520px;
+    margin-left:auto;
+  }
+
+  @media (max-width: 980px){ .diagram-frame{ margin: 0 auto; } }
+
+  .diagram-frame .corner{
+    position:absolute;
+    width:14px; height:14px;
+    border: 1px solid var(--line-bright);
+  }
+  .corner.tl{ top:10px; left:10px; border-right:none; border-bottom:none; }
+  .corner.tr{ top:10px; right:10px; border-left:none; border-bottom:none; }
+  .corner.bl{ bottom:10px; left:10px; border-right:none; border-top:none; }
+  .corner.br{ bottom:10px; right:10px; border-left:none; border-top:none; }
+
+  .diagram-label{
+    position:absolute;
+    top: 22px; left: 30px;
+    font-size:0.72rem;
+    color: var(--text-faint);
+    letter-spacing:0.02em;
+  }
+
+  .diagram-label b{ color: var(--text-dim); font-weight:500; }
+
+  #blueprint path,
+  #blueprint line,
+  #blueprint circle,
+  #blueprint rect{
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw 2.6s ease forwards;
+  }
+  #blueprint .fill-only{ animation: fadein 1.4s ease forwards; animation-delay: 1.6s; opacity:0; }
+
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadein{ to{ opacity:1; } }
+
+  @media (prefers-reduced-motion: reduce){
+    #blueprint path, #blueprint line, #blueprint circle, #blueprint rect{
+      animation:none; stroke-dashoffset:0;
+    }
+    #blueprint .fill-only{ animation:none; opacity:1; }
+  }
+
+  /* ---------- STAT STRIP ---------- */
+  .stat-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat{
+    padding: 34px 6vw;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+
+  @media (max-width: 760px){
+    .stat-strip{ grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2){ border-right:none; }
+  }
+
+  .stat .num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2.1rem;
+    font-weight:600;
+    color: var(--text);
+  }
+  .stat .num span{ color: var(--amber); font-size:1.1rem; }
+
+  .stat .label{
+    margin-top:6px;
+    font-size:0.82rem;
+    color: var(--text-faint);
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features{
+    padding: 12vh 6vw;
+    max-width:1440px;
+    margin:0 auto;
+  }
+
+  .features-head{
+    max-width:60ch;
+    margin-bottom:64px;
+  }
+
+  .features-head h2{
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color:var(--text);
+  }
+
+  .features-head p{
+    margin-top:16px;
+    color: var(--text-dim);
+    font-size:1rem;
+    max-width:52ch;
+  }
+
+  .feature-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+
+  @media (max-width: 900px){
+    .feature-grid{ grid-template-columns: 1fr; }
+  }
+
+  .feature{
+    padding: 40px 34px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+
+  .feature .mark{
+    width:38px; height:38px;
+    margin-bottom:26px;
+  }
+
+  .feature h3{
+    font-size:1.15rem;
+    color: var(--text);
+    margin-bottom:12px;
+  }
+
+  .feature p{
+    font-size:0.94rem;
+    color: var(--text-dim);
+    max-width: 34ch;
+  }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    margin: 0 6vw 12vh;
+    max-width:1440px;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid var(--line-bright);
+    background: linear-gradient(120deg, var(--bg-panel-raised), var(--bg-panel));
+    padding: 64px 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+
+  .cta-band h2{
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    max-width:20ch;
+    color: var(--text);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding: 40px 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:0.82rem;
+    color: var(--text-faint);
+  }
+
+  footer .logo-word{ font-size:0.95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="logo">
+      <svg viewBox="0 0 74 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="maskC-nav">
+            <rect width="64" height="64" fill="#000"></rect>
+            <text x="9" y="30" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#fff">C</text>
+          </mask>
+          <mask id="maskS-nav">
+            <rect width="64" height="64" fill="#000"></rect>
+            <text x="25" y="47" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#fff">S</text>
+          </mask>
+        </defs>
+        <polygon points="32,2 57.98,17 57.98,47 32,62 6.02,47 6.02,17" fill="none" stroke="#ffffff" stroke-width="2"></polygon>
+        <text x="15" y="30" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#82CBEF">C</text>
+        <text x="28" y="47" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#82CBEF">S</text>
+        <g mask="url(#maskC-nav)" stroke="#0b1220" stroke-width="1.1" opacity="0.4">
+          <line x1="0" y1="15" x2="64" y2="15"></line><line x1="0" y1="19" x2="64" y2="19"></line>
+          <line x1="0" y1="23" x2="64" y2="23"></line><line x1="0" y1="27" x2="64" y2="27"></line>
+        </g>
+        <g mask="url(#maskS-nav)" stroke="#0b1220" stroke-width="1.1" opacity="0.4">
+          <line x1="0" y1="32" x2="64" y2="32"></line><line x1="0" y1="36" x2="64" y2="36"></line>
+          <line x1="0" y1="40" x2="64" y2="40"></line><line x1="0" y1="44" x2="64" y2="44"></line>
+        </g>
+      </svg>
+      <span class="logo-word">Cloud<span>Stronger</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#platform">Platform</a>
+      <a href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#reliability">Reliability</a>
+      <a href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#pricing">Pricing</a>
+      <a href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#docs">Docs</a>
+    </div>
+    <a class="nav-cta" href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#start">Get started</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="kicker">Cloud infrastructure, engineered to hold</div>
+      <h1>A stronger cloud lets you cloud stronger.</h1><br>
+              <a>Email: redit4321@outlook.com</a>
+      <p class="lede">CloudStronger is compute, storage, and networking built like load-bearing infrastructure — so the traffic spike, the failover, and the 3 a.m. deploy all land on something solid.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#start">Deploy your first server</a>
+        <a class="btn-secondary" href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#platform">See the architecture &nbsp;→</a>
+      </div>
+      <div class="hero-note">No credit card to start. Provision a node in under 90 seconds.</div>
+    </div>
+
+    <div class="diagram-frame">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <div class="diagram-label">FIG. 01 — <b>load-bearing node cluster</b></div>
+      <svg id="blueprint" viewBox="0 0 400 420" width="100%" height="100%" style="margin-top:10px;">
+        <!-- dimension lines -->
+        <line x1="40" y1="60" x2="40" y2="360" stroke="#2c3f5c" stroke-width="1"></line>
+        <line x1="34" y1="60" x2="46" y2="60" stroke="#2c3f5c" stroke-width="1"></line>
+        <line x1="34" y1="360" x2="46" y2="360" stroke="#2c3f5c" stroke-width="1"></line>
+
+        <!-- cloud outline -->
+        <path d="M120 130c-30 0-52 22-54 49-19 3-33 19-33 39 0 22 19 40 42 40h205c25 0 46-20 46-45 0-22-16-40-38-44-3-32-31-57-66-57-14 0-27 4-38 12-11-9-24-14-38-14-11 0-21 3-26 20z" fill="none" stroke="#4a678f" stroke-width="2"></path>
+
+        <!-- server tower base -->
+        <rect x="150" y="255" width="100" height="30" rx="2" fill="#111a2c" stroke="#e2a23c" stroke-width="2"></rect>
+        <rect x="158" y="215" width="84" height="30" rx="2" fill="#111a2c" stroke="#e2a23c" stroke-width="2"></rect>
+        <rect x="166" y="175" width="68" height="30" rx="2" fill="#111a2c" stroke="#e2a23c" stroke-width="2"></rect>
+
+        <!-- rack ports -->
+        <circle cx="162" cy="270" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+        <circle cx="172" cy="270" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+        <circle cx="170" cy="230" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+        <circle cx="180" cy="230" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+        <circle cx="178" cy="190" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+        <circle cx="188" cy="190" r="2.4" fill="#e2a23c" class="fill-only"></circle>
+
+        <!-- support struts -->
+        <line x1="150" y1="285" x2="120" y2="340" stroke="#4a678f" stroke-width="1.5"></line>
+        <line x1="250" y1="285" x2="280" y2="340" stroke="#4a678f" stroke-width="1.5"></line>
+        <line x1="120" y1="340" x2="280" y2="340" stroke="#4a678f" stroke-width="1.5"></line>
+
+        <!-- ground line -->
+        <line x1="70" y1="360" x2="330" y2="360" stroke="#2c3f5c" stroke-width="1"></line>
+
+        <!-- annotation ticks -->
+        <line x1="255" y1="200" x2="300" y2="200" stroke="#2c3f5c" stroke-width="1"></line>
+        <circle cx="300" cy="200" r="2" fill="#4a678f" class="fill-only"></circle>
+      </svg>
+    </div>
+  </section>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="num">99.99<span>%</span></div>
+      <div class="label">Uptime SLA, load-tested quarterly</div>
+    </div>
+    <div class="stat">
+      <div class="num">11<span>ms</span></div>
+      <div class="label">Median cross-region latency</div>
+    </div>
+    <div class="stat">
+      <div class="num">27</div>
+      <div class="label">Regions on independent power grids</div>
+    </div>
+    <div class="stat">
+      <div class="num">3.2<span>M</span></div>
+      <div class="label">Requests served per second, peak</div>
+    </div>
+  </div>
+
+  <section class="features" id="platform">
+    <div class="features-head">
+      <h2>Built like infrastructure, not a stack of favors.</h2>
+      <p>Every layer is over-specified on purpose. When something breaks upstream, CloudStronger is the part of the system that doesn't.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <svg class="mark" viewBox="0 0 38 38" fill="none">
+          <rect x="7" y="22" width="24" height="8" stroke="#e2a23c" stroke-width="2"></rect>
+          <rect x="10" y="12" width="18" height="8" stroke="#e2a23c" stroke-width="2"></rect>
+          <line x1="19" y1="4" x2="19" y2="12" stroke="#4a678f" stroke-width="2"></line>
+        </svg>
+        <h3>Redundant by default</h3>
+        <p>Every node ships with a live replica in a separate power domain — no add-on plan required.</p>
+      </div>
+      <div class="feature">
+        <svg class="mark" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="13" stroke="#e2a23c" stroke-width="2"></circle>
+          <path d="M19 10v9l6 4" stroke="#4a678f" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <h3>Failover in seconds</h3>
+        <p>Traffic reroutes to healthy capacity automatically, before your monitoring even pages you.</p>
+      </div>
+      <div class="feature">
+        <svg class="mark" viewBox="0 0 38 38" fill="none">
+          <path d="M19 5l12 6v9c0 8-5.5 12.5-12 14-6.5-1.5-12-6-12-14v-9l12-6z" stroke="#e2a23c" stroke-width="2" stroke-linejoin="round"></path>
+          <path d="M14 19l4 4 7-8" stroke="#4a678f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <h3>Verified, not assumed</h3>
+        <p>Independent auditors run failure drills against production capacity every quarter, publicly.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band" id="start">
+    <h2>Put your next deploy on something that holds.</h2>
+    <a class="btn-primary" href="file:///C:/Users/redit/Downloads/cloudstronger-splash.html#">Start building free</a>
+  </div>
+
+  <footer>
+    <div class="logo">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="maskC-footer">
+            <rect width="64" height="64" fill="#000"></rect>
+            <text x="9" y="30" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#fff">C</text>
+          </mask>
+          <mask id="maskS-footer">
+            <rect width="64" height="64" fill="#000"></rect>
+            <text x="25" y="47" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#fff">S</text>
+          </mask>
+        </defs>
+        <polygon points="32,2 57.98,17 57.98,47 32,62 6.02,47 6.02,17" fill="none" stroke="#ffffff" stroke-width="2"></polygon>
+        <text x="9" y="30" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#82CBEF">C</text>
+        <text x="25" y="47" font-family="&#39;Space Grotesk&#39;, sans-serif" font-weight="700" font-size="24" fill="#82CBEF">S</text>
+        <g mask="url(#maskC-footer)" stroke="#0b1220" stroke-width="1.1" opacity="0.4">
+          <line x1="0" y1="15" x2="64" y2="15"></line><line x1="0" y1="19" x2="64" y2="19"></line>
+          <line x1="0" y1="23" x2="64" y2="23"></line><line x1="0" y1="27" x2="64" y2="27"></line>
+        </g>
+        <g mask="url(#maskS-footer)" stroke="#0b1220" stroke-width="1.1" opacity="0.4">
+          <line x1="0" y1="32" x2="64" y2="32"></line><line x1="0" y1="36" x2="64" y2="36"></line>
+          <line x1="0" y1="40" x2="64" y2="40"></line><line x1="0" y1="44" x2="64" y2="44"></line>
+        </g>
+      </svg>
+      <span class="logo-word">Cloud<span>Stronger</span></span>
+    </div>
+    <div>© 2026 CloudStronger, Inc. Built on infrastructure we'd bet on.</div>
+  </footer>
+
+</div>
+
+
+</body></html>
